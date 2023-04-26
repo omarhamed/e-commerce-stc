@@ -1,0 +1,86 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <h1>Product List</h1>
+      <a type="button" class="btn btn-primary mb-4" routerLink="/products/new">
+        Add New Product
+      </a>
+      <br />
+      <div class="row">
+        <div>
+          <table mat-table [dataSource]="products">
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef>No.</th>
+              <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+            </ng-container>
+
+            <!-- Title Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef>Title</th>
+              <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+            </ng-container>
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef>Price</th>
+              <td mat-cell *matCellDef="let product">
+                {{ product.price | currency }}
+              </td>
+            </ng-container>
+
+            <!-- image Column -->
+            <ng-container matColumnDef="image">
+              <th mat-header-cell *matHeaderCellDef>Image</th>
+              <td mat-cell *matCellDef="let product">
+                <img class="img-responsive" src="{{ product.image }}" />
+              </td>
+            </ng-container>
+
+            <!-- View Column -->
+            <ng-container matColumnDef="view">
+              <th mat-header-cell *matHeaderCellDef>
+                <p class="txt-center">View</p>
+              </th>
+              <td mat-cell *matCellDef="let product" class="txt-center">
+                <button mat-raised-button color="primary">
+                  <a routerLink="/products/{{ product.id }}">Details</a>
+                </button>
+              </td>
+            </ng-container>
+
+            <!-- Update Column -->
+            <ng-container matColumnDef="update">
+              <th mat-header-cell *matHeaderCellDef>
+                <p class="txt-center">Update</p>
+              </th>
+              <td mat-cell *matCellDef="let product" class="txt-center">
+                <button mat-raised-button color="accent">
+                  <a href="{{ product.id }}">Update</a>
+                </button>
+              </td>
+            </ng-container>
+
+            <!-- Delete Column -->
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef class="txt-center">
+                <p class="txt-center">Delete</p>
+              </th>
+              <td mat-cell *matCellDef="let product" class="txt-center">
+                <button mat-raised-button color="warn">
+                  <a href="{{ product.id }}">Delete</a>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let product; columns: displayedColumns"
+            ></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

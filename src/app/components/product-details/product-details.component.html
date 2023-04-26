@@ -1,0 +1,26 @@
+<div class="detail-section section-content section-content-p30">
+  <div class="container-fluid">
+    <img src="{{ product.image }}" class="detail-img" />
+    <hr />
+    <h3>{{ product.title }}</h3>
+
+    <ngb-rating
+      [max]="5"
+      [rate]="product.rating.rate"
+      [readonly]="true"
+    ></ngb-rating>
+
+    <div class="price">
+      {{ product.price | currency : "USD" }} | Count :
+      {{ product.rating.count }}
+    </div>
+
+    <a href="#" class="primary-btn">Add To Cart</a>
+
+    <hr />
+    <h4>Description</h4>
+    <p>{{ product.description }}</p>
+
+    <a routerLink="/products" class="mt-5">Back to product list</a>
+  </div>
+</div>
